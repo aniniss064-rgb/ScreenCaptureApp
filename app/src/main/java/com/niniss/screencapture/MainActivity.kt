@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 ContextCompat.startForegroundService(this, serviceIntent)
                 statusText.text = "Capture active - utilise la bulle bleue"
-                // On reduit l'app pour que la bulle soit utilisable tout de suite
-                moveTaskToBack(true)
+                // On laisse le service demarrer avant de reduire l'app
+                statusText.postDelayed({ moveTaskToBack(true) }, 1200)
             } else {
                 Toast.makeText(this, "Permission refusee", Toast.LENGTH_SHORT).show()
             }
